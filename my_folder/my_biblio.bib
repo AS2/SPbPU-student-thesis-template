@@ -1,714 +1,307 @@
 % Examples from https://verbosus.com/bibtex-style-examples.html
-@ARTICLE{Article,
-  author   = {Peter Adams},
-  title    = {The title of the work},
-  journal  = {The name of the journal},
-  year     = {1993},
-  number   = {2},
-  pages    = {201-213},
-  month    = {7},
-  volume   = {4},
+@book{AIAMA,
+  author    = {Russell, Stuart and Norvig, Peter},
+  title     = {Artificial Intelligence: A Modern Approach},
+  year      = {2009},
+  isbn      = {0136042597},
+  publisher = {Prentice Hall Press},
+  address   = {USA},
+  edition   = {3rd},
+  abstract  = {The long-anticipated revision of this #1 selling book offers the most comprehensive, state of the art introduction to the theory and practice of artificial intelligence for modern applications. Intelligent Agents. Solving Problems by Searching. Informed Search Methods. Game Playing. Agents that Reason Logically. First-order Logic. Building a Knowledge Base. Inference in First-Order Logic. Logical Reasoning Systems. Practical Planning. Planning and Acting. Uncertainty. Probabilistic Reasoning Systems. Making Simple Decisions. Making Complex Decisions. Learning from Observations. Learning with Neural Networks. Reinforcement Learning. Knowledge in Learning. Agents that Communicate. Practical Communication in English. Perception. Robotics. For computer professionals, linguists, and cognitive scientists interested in artificial intelligence.}
+}
+
+@book{Sutton1998,
+  added-at  = {2019-07-13T10:11:53.000+0200},
+  author    = {Sutton, Richard S. and Barto, Andrew G.},
+  biburl    = {https://www.bibsonomy.org/bibtex/2f46601cf8b13d39d1378af0d79438b12/lanteunis},
+  edition   = {Second},
+  interhash = {ac6b144aaec1819919a2fba9f705c852},
+  intrahash = {f46601cf8b13d39d1378af0d79438b12},
+  keywords  = {},
+  publisher = {The MIT Press},
+  timestamp = {2019-07-13T10:11:53.000+0200},
+  title     = {Reinforcement Learning: An Introduction},
+  url       = {http://incompleteideas.net/book/the-book-2nd.html},
+  year      = {2018 }
+}
+
+@misc{hyde,
+  title         = {Precise Zero-Shot Dense Retrieval without Relevance Labels},
+  author        = {Luyu Gao and Xueguang Ma and Jimmy Lin and Jamie Callan},
+  year          = {2022},
+  eprint        = {2212.10496},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.IR},
+  url           = {https://arxiv.org/abs/2212.10496}
+}
+
+@misc{rag-cossim,
+  title         = {Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks},
+  author        = {Patrick Lewis and Ethan Perez and Aleksandra Piktus and Fabio Petroni and Vladimir Karpukhin and Naman Goyal and Heinrich Küttler and Mike Lewis and Wen-tau Yih and Tim Rocktäschel and Sebastian Riedel and Douwe Kiela},
+  year          = {2021},
+  eprint        = {2005.11401},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2005.11401}
+}
+
+@inproceedings{tot,
+  author    = {Yao, Shunyu and Yu, Dian and Zhao, Jeffrey and Shafran, Izhak and Griffiths, Tom and Cao, Yuan and Narasimhan, Karthik},
+  booktitle = {Advances in Neural Information Processing Systems},
+  editor    = {A. Oh and T. Naumann and A. Globerson and K. Saenko and M. Hardt and S. Levine},
+  pages     = {11809--11822},
+  publisher = {Curran Associates, Inc.},
+  title     = {Tree of Thoughts: Deliberate Problem Solving with Large Language Models},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/file/271db9922b8d1f4dd7aaef84ed5ac703-Paper-Conference.pdf},
+  volume    = {36},
+  year      = {2023}
+}
+
+@misc{zeroshot-cot,
+  title         = {Large Language Models are Zero-Shot Reasoners},
+  author        = {Takeshi Kojima and Shixiang Shane Gu and Machel Reid and Yutaka Matsuo and Yusuke Iwasawa},
+  year          = {2023},
+  eprint        = {2205.11916},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2205.11916}
+}
+
+@misc{agentlaboratory,
+  title         = {Agent Laboratory: Using LLM Agents as Research Assistants},
+  author        = {Samuel Schmidgall and Yusheng Su and Ze Wang and Ximeng Sun and Jialian Wu and Xiaodong Yu and Jiang Liu and Zicheng Liu and Emad Barsoum},
+  year          = {2025},
+  eprint        = {2501.04227},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.HC},
+  url           = {https://arxiv.org/abs/2501.04227}
+}
+
+@misc{DataInterpreter,
+  title         = {Data Interpreter: An LLM Agent For Data Science},
+  author        = {Sirui Hong and Yizhang Lin and Bang Liu and Bangbang Liu and Binhao Wu and Ceyao Zhang and Chenxing Wei and Danyang Li and Jiaqi Chen and Jiayi Zhang and Jinlin Wang and Li Zhang and Lingyao Zhang and Min Yang and Mingchen Zhuge and Taicheng Guo and Tuo Zhou and Wei Tao and Xiangru Tang and Xiangtao Lu and Xiawu Zheng and Xinbing Liang and Yaying Fei and Yuheng Cheng and Zhibin Gou and Zongze Xu and Chenglin Wu},
+  year          = {2024},
+  eprint        = {2402.18679},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2402.18679}
+}
+
+@misc{aiscientist,
+  title         = {The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery},
+  author        = {Chris Lu and Cong Lu and Robert Tjarko Lange and Jakob Foerster and Jeff Clune and David Ha},
+  year          = {2024},
+  eprint        = {2408.06292},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2408.06292}
+}
+
+@article{mcp_survey,
+  title     = {A Survey on Model Context Protocol: Architecture, State-of-the-art, Challenges and Future Directions},
+  url       = {http://dx.doi.org/10.36227/techrxiv.174495492.22752319/v1},
+  doi       = {10.36227/techrxiv.174495492.22752319/v1},
+  publisher = {Institute of Electrical and Electronics Engineers (IEEE)},
+  author    = {Ray, Partha Pratim},
+  year      = {2025},
+  month     = apr
+}
+
+@misc{plaandsolve,
+  title         = {Plan-and-Solve Prompting: Improving Zero-Shot Chain-of-Thought Reasoning by Large Language Models},
+  author        = {Lei Wang and Wanyu Xu and Yihuai Lan and Zhiqiang Hu and Yunshi Lan and Roy Ka-Wei Lee and Ee-Peng Lim},
+  year          = {2023},
+  eprint        = {2305.04091},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2305.04091}
+}
+
+@misc{aide,
+  title         = {AIDE: AI-Driven Exploration in the Space of Code},
+  author        = {Zhengyao Jiang and Dominik Schmidt and Dhruv Srikanth and Dixing Xu and Ian Kaplan and Deniss Jacenko and Yuxiang Wu},
+  year          = {2025},
+  eprint        = {2502.13138},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2502.13138}
+}
+
+@article{codeact,
+  title   = {Executable Code Actions Elicit Better LLM Agents},
+  author  = {Xingyao Wang and Yangyi Chen and Lifan Yuan and Yizhe Zhang and Yunzhu Li and Hao Peng and Heng Ji},
+  journal = {ArXiv},
+  year    = {2024},
+  volume  = {abs/2402.01030},
+  url     = {https://api.semanticscholar.org/CorpusID:267406155}
+}
+
+@article{react,
+  title   = {ReAct: Synergizing Reasoning and Acting in Language Models},
+  author  = {Shunyu Yao and Jeffrey Zhao and Dian Yu and Nan Du and Izhak Shafran and Karthik Narasimhan and Yuan Cao},
+  journal = {ArXiv},
+  year    = {2022},
+  volume  = {abs/2210.03629},
+  url     = {https://api.semanticscholar.org/CorpusID:252762395}
+}
+
+@misc{bad_auto_planning,
+  title         = {On the Planning Abilities of Large Language Models (A Critical Investigation with a Proposed Benchmark)},
+  author        = {Karthik Valmeekam and Sarath Sreedharan and Matthew Marquez and Alberto Olmo and Subbarao Kambhampati},
+  year          = {2023},
+  eprint        = {2302.06706},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2302.06706}
+}
+
+@misc{deepseekr1,
+  title         = {DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning},
+  author        = {DeepSeek-AI and Daya Guo and Dejian Yang and Haowei Zhang and Junxiao Song and Ruoyu Zhang and Runxin Xu and Qihao Zhu and Shirong Ma and Peiyi Wang and Xiao Bi and Xiaokang Zhang and Xingkai Yu and Yu Wu and Z. F. Wu and Zhibin Gou and Zhihong Shao and Zhuoshu Li and Ziyi Gao and Aixin Liu and Bing Xue and Bingxuan Wang and Bochao Wu and Bei Feng and Chengda Lu and Chenggang Zhao and Chengqi Deng and Chenyu Zhang and Chong Ruan and Damai Dai and Deli Chen and Dongjie Ji and Erhang Li and Fangyun Lin and Fucong Dai and Fuli Luo and Guangbo Hao and Guanting Chen and Guowei Li and H. Zhang and Han Bao and Hanwei Xu and Haocheng Wang and Honghui Ding and Huajian Xin and Huazuo Gao and Hui Qu and Hui Li and Jianzhong Guo and Jiashi Li and Jiawei Wang and Jingchang Chen and Jingyang Yuan and Junjie Qiu and Junlong Li and J. L. Cai and Jiaqi Ni and Jian Liang and Jin Chen and Kai Dong and Kai Hu and Kaige Gao and Kang Guan and Kexin Huang and Kuai Yu and Lean Wang and Lecong Zhang and Liang Zhao and Litong Wang and Liyue Zhang and Lei Xu and Leyi Xia and Mingchuan Zhang and Minghua Zhang and Minghui Tang and Meng Li and Miaojun Wang and Mingming Li and Ning Tian and Panpan Huang and Peng Zhang and Qiancheng Wang and Qinyu Chen and Qiushi Du and Ruiqi Ge and Ruisong Zhang and Ruizhe Pan and Runji Wang and R. J. Chen and R. L. Jin and Ruyi Chen and Shanghao Lu and Shangyan Zhou and Shanhuang Chen and Shengfeng Ye and Shiyu Wang and Shuiping Yu and Shunfeng Zhou and Shuting Pan and S. S. Li and Shuang Zhou and Shaoqing Wu and Shengfeng Ye and Tao Yun and Tian Pei and Tianyu Sun and T. Wang and Wangding Zeng and Wanjia Zhao and Wen Liu and Wenfeng Liang and Wenjun Gao and Wenqin Yu and Wentao Zhang and W. L. Xiao and Wei An and Xiaodong Liu and Xiaohan Wang and Xiaokang Chen and Xiaotao Nie and Xin Cheng and Xin Liu and Xin Xie and Xingchao Liu and Xinyu Yang and Xinyuan Li and Xuecheng Su and Xuheng Lin and X. Q. Li and Xiangyue Jin and Xiaojin Shen and Xiaosha Chen and Xiaowen Sun and Xiaoxiang Wang and Xinnan Song and Xinyi Zhou and Xianzu Wang and Xinxia Shan and Y. K. Li and Y. Q. Wang and Y. X. Wei and Yang Zhang and Yanhong Xu and Yao Li and Yao Zhao and Yaofeng Sun and Yaohui Wang and Yi Yu and Yichao Zhang and Yifan Shi and Yiliang Xiong and Ying He and Yishi Piao and Yisong Wang and Yixuan Tan and Yiyang Ma and Yiyuan Liu and Yongqiang Guo and Yuan Ou and Yuduan Wang and Yue Gong and Yuheng Zou and Yujia He and Yunfan Xiong and Yuxiang Luo and Yuxiang You and Yuxuan Liu and Yuyang Zhou and Y. X. Zhu and Yanhong Xu and Yanping Huang and Yaohui Li and Yi Zheng and Yuchen Zhu and Yunxian Ma and Ying Tang and Yukun Zha and Yuting Yan and Z. Z. Ren and Zehui Ren and Zhangli Sha and Zhe Fu and Zhean Xu and Zhenda Xie and Zhengyan Zhang and Zhewen Hao and Zhicheng Ma and Zhigang Yan and Zhiyu Wu and Zihui Gu and Zijia Zhu and Zijun Liu and Zilin Li and Ziwei Xie and Ziyang Song and Zizheng Pan and Zhen Huang and Zhipeng Xu and Zhongyu Zhang and Zhen Zhang},
+  year          = {2025},
+  eprint        = {2501.12948},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2501.12948}
+}
+
+@misc{rl-star,
+  title         = {RL-STaR: Theoretical Analysis of Reinforcement Learning Frameworks for Self-Taught Reasoner},
+  author        = {Fu-Chieh Chang and Yu-Ting Lee and Hui-Ying Shih and Yi Hsuan Tseng and Pei-Yuan Wu},
+  year          = {2025},
+  eprint        = {2410.23912},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2410.23912}
+}
+
+@online{chatml,
+  title       = {Chat markup language chatml (preview)},
+  url         = {https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/chat-markup-language},
+  urldate     = {2025-04-30},
   hyphenation = {english}
 }
 
-@BOOK{Book,
-  author    = {Peter Babington}, 
-  title     = {The title of the work},
-  publisher = {The name of the publisher},
-  year      = {1993},
-  volume    = {4},
-  series    = {10},
-  address   = {The address},
-  edition   = {3},
-  month     = {7},
-  pagetotal = {255},
-  isbn      = {3257227892},
-  hyphenation  = {english}
-}
-
-@BOOKLET{Booklet,
-  title        = {The title of the work},
-  author       = {Peter Caxton}, 
-  address      = {The address of the publisher},
-  month        = {7},
-  year         = {1993},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@CONFERENCE{Conference,
-  author       = {Peter Draper}, 
-  title        = {The title of the work},
-  booktitle    = {The title of the book},
-  year         = {1993},
-  editor       = {The editor},
-  volume       = {4},
-  series       = {5},
-  pagetotal = {255},
-  address      = {The address of the publisher},
-  month        = {7},
-  organization = {The organization},
-  publisher    = {The publisher},
-  hyphenation     = {english}
-}
-
-@INBOOK{Inbook,
-  author       = {Peter Eston},
-  title        = {The title of the work},
-  booktitle    = {Book title},
-  chapter      = {8},
-  pages        = {201-213},
-  publisher    = {The name of the publisher},
-  year         = {1993},
-  volume       = {4},
-  series       = {5},
-  address      = {The address of the publisher},
-  edition      = {3},
-  month        = {7},
-  hyphenation     = {english}
-}
-
-@INCOLLECTION{Incollection,
-  author       = {Peter Farindon},
-  title        = {The title of the work},
-  booktitle    = {The title of the book},
-  publisher    = {The name of the publisher},
-  year         = {1993},
-  editor       = {The editor},
-  volume       = {4},
-  series       = {5},
-  chapter      = {8},
-  pages        = {201-213},
-  address      = {The address of the publisher},
-  edition      = {3},
-  month        = {7},
-  hyphenation     = {english}
-}
-
-@MANUAL{Manual,
-  title        = {The title of the work},
-  author       = {Peter Gainsford}, 
-  organization = {The organization},
-  address      = {The address of the publisher},
-  edition      = {3},
-  month        = {7},
-  year         = {1993},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@MASTERSTHESIS{Mastersthesis,
-  author       = {Peter Harwood},
-  title        = {The title of the work},
-  school       = {The school where the thesis was written},
-  year         = {1993},
-  address      = {The address of the publisher},
-  month        = {7},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@MISC{Misc,
-  author       = {Peter Isley},
-  title        = {The title of the work},
-  month        = {7},
-  year         = {1993},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@PHDTHESIS{Phdthesis,
-  author       = {Peter Joslin}, 
-  title        = {The title of the work},
-  school       = {The school where the thesis was written},
-  science =      {PhD in Engineering},
-  year         = {1993},
-  address      = {The address of the publisher},
-  month        = {7},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@PROCEEDINGS{Proceedings,
-  title        = {The title of the work},
-  year         = {1993},
-  editor       = {Peter Kidwelly},
-  volume       = {4},
-  series       = {5},
-  address      = {The address of the publisher},
-  month        = {7},
-  pagetotal = {255},
-  organization = {The organization},
-  publisher    = {The name of the publisher},
-  hyphenation     = {english}
-}
-
-@TECHREPORT{Techreport,
-  author       = {Peter Lambert},
-  title        = {The title of the work},
-  institution  = {The institution that published},
-  year         = {1993},
-  number       = {2},
-  address      = {The address of the publisher},
-  month        = {7},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@UNPUBLISHED{Unpublished,
-  author       = {Peter Marcheford}, 
-  title        = {The title of the work},
-  month        = {7},
-  year         = {1993},
-  pagetotal = {255},
-  hyphenation     = {english}
-}
-
-@Book{badiou:briefings,
-  title =        {Briefings on Existence},
-  subtitle =     {A Short Treatise on Transitory Ontology},
-  author =       {Badiou, Alain},
-  year =         2006,
-  translator =   {Norman Madarasz},
-  editor =       {Norman Madarasz},
-  introduction = {Norman Madarasz},
-  isbn =         {978-0-7914-6803-6},
-  url =          {https://books.google.ru/books?id=7HNkAT\_NFksC},
-  publisher =    {SUNY Press},
-  location =     {NY},
-  pagetotal = {190},
-  origlanguage = {french},
-  language =     {english},
-  langid =       {english},
-  urldate= {2017-12-05}
-}
-
-@article{Naidenova2017,
-author={Naidenova, X. and Buzmakov, A. and Parkhomenko, V. and Schukin, A.},
-title={Notes on relation between symbolic classifiers},
-journal={CEUR Workshop Proceedings},
-year={2017},
-volume={1921},
-pages={88--103},
-editor={Watson B.W., Kuznetsov S.O.},
-publisher={CEUR-WS},
-  hyphenation     = {english},
-abbrev_source_title={CEUR Workshop Proc.},
-document_type={Conference Paper},
-source={Scopus},
-url={http://ceur-ws.org/Vol-1921/paper9.pdf},
-  urldate= {2017-12-19}
-}
-
-@BOOK{Ganter1999,
-  author = {Ganter, B and Wille, R},
-  title = {Formal concept analysis: mathematical foundations},
-  year = {1999},
-  publisher = {Springer, Berlin},
-  pagetotal = {284},
-  hyphenation     = {english}
-}
-
-
-%%thesis entry defided as phdthesis for all puroses
-@thesis{Peskov2004,
- author = {Peskov, Nickolay Vladimirovich},
- title = {Searching for informative fragments of object descriptions in the recognition tasks},
- year = {2004},
- pagetotal = {102},
- location       = {M.},
-  hyphenation     = {english},
-  langid={english},
-  language={english},
-  note = {in Russian},
-  type =         {phdthesis},
-  science =      {cand. phys.-math. sci.},
-  specialitycode ={05.13.17}
-}
-
-
-@thesis{Peskov2004-ru,
- author = {Песков, Николай Владимирович},
- title = {Поиск информативных фрагментов описаний объектов в задачах распознавания},
- year = {2004},
- pagetotal = {102},
- location       = {М.},
-  hyphenation     = {russian},
-  langid={russian},
-  language={russian},
-  type =         {phdthesis},
-  science =      {канд. физ.-мат. наук},
-  specialitycode ={05.13.17}
-}
-
-@Online{spbpu-gallery,
-  title= {SPbPU photo gallery},
-  url =          {http://www.spbstu.ru/media/photo-gallery/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-bci-template,
-  title= {SPbPU-BCI-template},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-BCI-template},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-bci-template-author-guide,
-  title= {Author and editor guide to prepare and submit the academic SPbPU editions to Clarivate Analytics: Book Citation Index Web of Science},
-  author = {Parkhomenko, V. and Piskun, O. and Shvetsov, K. and Schukin, A.},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-BCI-template/blob/master/Author_guide_SPbPU-BCI.pdf},
-  urldate =      {2019-03-06},
-  year = {2018},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-bci-template-zip,
-  title= {Zip archive of SPbPU-BCI-template},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-BCI-template/archive/master.zip},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-bci-template-issues,
-  title= {Issues of the SPbPU-BCI-template project},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-BCI-template/issues},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-student-thesis-specification,
-  title= {Положение о порядке проведения государственной итоговой аттестации по образовательным программам высшего образования --- программам бакалавриата, программам специалитета и программам магистратуры (в редакции приказа от 03.05.2018 № 946)},
-  url =          {https://dep.spbstu.ru/userfiles/files/prev/docs/for_students/gia_03_05_2018.pdf},
-  urldate =      {2019-03-06},
-  year = {2018},
-  hyphenation =     {russian}
-}
-
-
-@Online{spbpu-student-thesis-template,
-  title= {SPbPU-student-thesis-template},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-student-thesis-template},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-vkr-sumbission,
-  title= {Модуль публикации ВКР и научных докладов СПбПУ},
-  url =          {http://vkr.spbstu.ru/},
-  urldate =      {2019-03-06},
-  hyphenation =     {russian}
-}
-
-@Online{kspt-templates-thesis,
-  title= {KSPT-templates-thesis},
-  url =          {https://gitlab.com/kspt-templates/thesis},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{kspt-templates-presentation,
-  title= {KSPT-templates-presentation},
-  url =          {https://gitlab.com/kspt-templates/presentation},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{kspt-templates-report,
-  title= {KSPT-templates-report},
-  url =          {https://gitlab.com/kspt-templates/report},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Reference{gost-russian-thesises,
-heading = {ГОСТ Р 7.0.11--2011},
-title = {Система стандартов по информации, библиотечному и издательскому делу. Диссертация и автореферат диссертации. Структура и правила оформления},
-media = {text},
-specdata = {Введ. 13.12.11},
-location = {М.},
-publisher = {Стандартинформ},
-year = {2012},
-pagetotal = {12},
-series = {Национальный стандарт Российской Федерации},
-hyphenation = {russian}
-}
-
-@Reference{gost-russian-bibliography-reference,
-heading = {ГОСТ Р 7.0.5--2008},
-title = {Система стандартов по информации, библиотечному и издательскому делу. Библиографическая ссылка. Общие требования и правила оформления},
-media = {text},
-specdata = {Введ. 28.04.08},
-location = {М.},
-publisher = {Стандартинформ},
-year = {2008},
-pagetotal = {41},
-series = {Национальный стандарт Российской Федерации},
-hyphenation = {russian}
-}
-
-
-@Reference{gost-russian-text-documents,
-title = {Единая система конструкторской документации. Общие требования к текстовым документам},
-media = {text},
-subtitle = {ГОСТ 2.105--95},
-specdata = {Взамен ГОСТ 2.105–-79, ГОСТ 2.906–-71~; введ. 1996–-07–-01},
-location = {Минск~: Межгос. совет по стандартизации, метрологии и сертификации},
-year = {2002},
-pagetotal = {31},
-series = {Межгосударственный стандарт},
-hyphenation = {russian}
-}
-
-@Book{avtonomova:fya,
-author = {Н. С. Автономова},
-title = {Философский язык Жака Деррида},
-year = {2011},
-publisher = {Российская политическая энциклопедия (РОССПЭН)},
-location = {М.},
-isbn = {978-5-8243-1618-6},
-series = {Российские Пропилеи},
-pagetotal = {510},
-hyphenation = {russian}
-}
-
-
-
-@Online{spbpu-student-thesis-template-author-guide,
-  title= {Руководство студента СПбПУ по~подготовке выпускной квалификационной работы и сопутствующих документов с~помощью LaTeX},
-  author = {Пархоменко, В. A. and Загороднюк, О. В. and Дробинцев, П. Д. and Ицыксон, В. М. and  Щукин, А. В.},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-student-thesis-template/blob/master/Author_guide_SPbPU-student-thesis.pdf},
-  urldate =      {2019-03-06},
-  year = {2018},
-  hyphenation =     {russian}
-}
-
-@Online{spbpu-student-thesis-template-zip,
-  title= {Zip archive of SPbPU-student-thesis-template},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-student-thesis-template/archive/master.zip},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{spbpu-student-thesis-template-issues,
-  title= {Issues of the SPbPU-student-thesis-template project},
-  url =          {https://github.com/ParkhomenkoV/SPbPU-student-thesis-template/issues},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{site-table-generator,
-  title= {LaTeX Tables Generator},
-  url =          {https://www.tablesgenerator.com/latex_tables},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{site-mathpix,
-  title= {Mathpix. Extract LaTeX from PDFs or handwritten notes in seconds},
-  url =          {https://mathpix.com/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{ca-pr,
-  title= {Publisher Relations of Clarivate Analytics},
-  url =          {https://clarivate.com/products/publisher-relations/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{ca-wos-bci,
-  title= {The Selection Process for the Book Citation Index in Web Of Science},
-  author={Testa, James},
-  url =          {https://clarivate.com/essays/selection-process-book-citation-index-web-science/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{latex-texstudio,
-  title= {TeXstudio web site},
-  url =          {https://www.texstudio.org/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{latex-miktex,
-  title= {MiKTeX web site},
-  url =          {https://miktex.org/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{latex-texlive,
-  title= {TeX Live web site},
-  url =          {https://www.tug.org/texlive/},
-  urldate =      {2025-01-30},
-  hyphenation =     {english}
-}
-
-
-
-@Online{reviewing-easychair,
-  title= {EasyChair web site},
-  url =          {http://easychair.org/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{latex-coursera,
-  title= {Introduction to LaTeX},
-  author = {Fedorovykh, Danil},
-  url =          {https://www.coursera.org/learn/latex},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{overleaf-IEEE,
-  title= {Gallery Overleaf Items tagged IEEE},
-  url =          {https://www.overleaf.com/gallery/tagged/ieee},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{site-IEEE-article-templates,
-  title= {IEEE Article Templates},
-  url =          {https://journals.ieeeauthorcenter.ieee.org/create-your-ieee-journal-article/authoring-tools-and-templates/ieee-article-templates/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{site-IEEE-conference-templates,
-  title= {Manuscript Templates for Conference Proceedings},
-  url =          {https://www.ieee.org/conferences/publishing/templates.html},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{overleaf-Elsevier,
-  title= {Gallery Overleaf Items tagged Elsevier},
-  url =          {https://www.overleaf.com/gallery/tagged/elsevier},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{ctan-elsarticle,
-  title= {The elsarticle class --- Class for articles for submission to Elsevier journals},
-  url =          {https://ctan.org/pkg/elsarticle},
-  author = {Radhakrishnan, C. V. and Pepping, Simon and Ruck, Martin},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{overleaf-Springer,
-  title= {Gallery Overleaf Items tagged Springer},
-  url =          {https://www.overleaf.com/gallery/tagged/springer},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{site-Springer-LNCS,
-  title= {Information for Authors of Springer Computer Science Proceedings},
-  url =          {https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Book{Kotelnikov2004,
-  title= {LaTeX in Russian},
-  author = {Kotelnikov, I. A. and Chebotaev, P. Z.},
-  url =          {http://www.tex.uniyar.ac.ru/doc/kotelnikovchebotaev2004b.pdf},
-  urldate =      {2019-03-06},
-  edition = {3},
-  year = {2004},
-  hyphenation =     {english},
-  location = {Novosibirsk},
-  publisher = {Sibiskiy Hronograph},
-  note = {in Russian},
-  pagetotal = {496}
-}
-
-@Book{Kotelnikov2004-ru,
-  title= {LaTeX по-русски},
-  author = {Котельников, И. А. and Чеботаев, П. З.},
-  url =          {http://www.tex.uniyar.ac.ru/doc/kotelnikovchebotaev2004b.pdf},
-  urldate =      {2019-03-06},
-  edition = {3},
-  year = {2004},
-  hyphenation =     {russian},
-  location = {Новосибирск},
-  publisher = {Сибирский Хронограф},
-  pagetotal = {496}
-}
-
-
-
-@Book{Lvovsky2004,
-  title= {Typesetting and preparing in the LATEX system},
-  author = {Lvovsky, S. M.},
-  url =          {ftp://ftp.mccme.ru/pub/tex/lvovsky-newbook/pdf.zip},
-  urldate =      {2019-03-06},
-  edition = {3},
-  year = {2003},
-  pagetotal = {448},
-  hyphenation =     {english}
-}
-
-
-@Online{ctan-memoir,
-  title= {The memoir class},
-  url =          {https://ctan.org/pkg/memoir},
-  author = {Madsen, Lars and Wilson, P. R.},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{cand-doct-templates,
-  title= {Russian-Phd-LaTeX-Dissertation-Template},
-  url = {https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template},
-  author = {Akinshin, A. and et.al},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{latex-stack,
-  title= {TeX --- LaTeX Stack Exchange},
-  url =          {https://tex.stackexchange.com/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{stack-why-latex,
-  title= {Why should I use LaTeX?},
-  url =          {https://tex.stackexchange.com/questions/1756/why-should-i-use-latex},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{site-git,
-  title= {Git web site},
-  url =          {https://git-scm.com/downloads},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{ctan,
-  title= {The Comprehensive TEX Archive Network},
-  url =          {https://ctan.org},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{scopus-submission,
-  title= {Scopus title suggestion},
-  url =          {http://suggestor.step.scopus.com/suggestTitle/step1.cfm},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{mendeley-web-importer,
-  title= {Mendeley Web Importer},
-  url =          {https://www.mendeley.com/reference-management/web-importer},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{google-scholar,
-  title= {Google Scholar},
-  url =          {https://scholar.google.com/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-
-@Online{ctan-biblatex-gost,
-  title= {BibLATEX support for GOST standard bibliographies},
-  url =          {https://ctan.org/pkg/biblatex-gost},
-  author = {Domanov, Oleg},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-
-
-@Online{ctan-biblatex-gost-examples,
-  title= {Biblatex-GOST examples},
-  url =          {http://ctan.altspu.ru/macros/latex/contrib/biblatex-contrib/biblatex-gost/doc/biblatex-gost-examples.pdf},
-  author = {Domanov, Oleg},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{ctan-layouts,
-  title= {The layouts package},
-  url =          {https://ctan.org/pkg/layouts},
-  author = {Robertson, Will and Wilson, P. R.},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{spbpu-brandbook,
-  title= {The SPbPU brandbook},
-  url =          {http://www.spbstu.ru/university/organizational-documents/corporate-identity/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{spbpu-doi-centre,
-  title= {The national centre for the identification of scientific data},
-  url =          {http://doi.spbstu.ru/ru/},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{ctan-tikz,
-  title= {The TikZ and PGF packages},
-  url =          {https://ctan.org/pkg/pgf},
-  author = {Feuersanger, Christian and Tantau, Till},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-
-@Online{ctan-algorithm2e,
-  title= {The algorithm2e package},
-  url =          {https://ctan.org/pkg/algorithm2e},
-  author = {Fiorio, Christophe},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{ctan-makeidx,
-  title= {The makeidx package},
-  url =          {https://ctan.org/pkg/makeidx},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
-
-@Online{gosstat,
-  title= {Сайт Федеральной службы государственной статистики},
-  url =          {http://www.gks.ru/},
-  urldate =      {2019-03-06},
-  hyphenation =     {russian}
-}
-
-
-@Online{uci,
-  title= {The UC Irvine Machine Learning Repository},
-  url =          {http://archive.ics.uci.edu/ml},
-  urldate =      {2019-03-06},
-  hyphenation =     {english}
-}
+@online{mcp-docs,
+  title       = {ModelContextProtocol - official documentation},
+  url         = {https://modelcontextprotocol.io/introduction},
+  urldate     = {2025-04-30},
+  hyphenation = {english}
+}
+
+@online{pae_native,
+  title       = {Plan and execute - implementation on LangGraph},
+  url         = {https://langchain-ai.github.io/langgraph/tutorials/plan-and-execute/plan-and-execute/},
+  urldate     = {2025-04-30},
+  hyphenation = {english}
+}
+
+@online{google_pydoc,
+  title       = {Google Python Style Guide},
+  url         = {https://google.github.io/styleguide/pyguide.html},
+  urldate     = {2025-05-01},
+  hyphenation = {english}
+}
+
+@online{streamlit,
+  title       = {Streamlit - documentation},
+  url         = {https://docs.streamlit.io/},
+  urldate     = {2025-05-02},
+  hyphenation = {english}
+}
+
+@online{langsmith,
+  title       = {LangSmith - documentation},
+  url         = {https://docs.smith.langchain.com/},
+  urldate     = {2025-05-02},
+  hyphenation = {english}
+}
+
+@online{langchain,
+  title       = {LangChain - documentation},
+  url         = {https://python.langchain.com/docs/introduction/},
+  urldate     = {2025-05-02},
+  hyphenation = {english}
+}
+
+@online{langgraph,
+  title       = {LangGraph - documentation},
+  url         = {https://langchain-ai.github.io/langgraph/tutorials/introduction/},
+  urldate     = {2025-05-02},
+  hyphenation = {english}
+}
+
+@inproceedings{attn_need,
+  author    = {Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N and Kaiser, \L ukasz and Polosukhin, Illia},
+  booktitle = {Advances in Neural Information Processing Systems},
+  editor    = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+  pages     = {},
+  publisher = {Curran Associates, Inc.},
+  title     = {Attention is All you Need},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2017/file/3f5ee243547dee91fbd053c1c4a845aa-Paper.pdf},
+  volume    = {30},
+  year      = {2017}
+}
+
+@misc{cached_kv,
+  title         = {Keep the Cost Down: A Review on Methods to Optimize LLM' s KV-Cache Consumption},
+  author        = {Luohe Shi and Hongyi Zhang and Yao Yao and Zuchao Li and Hai Zhao},
+  year          = {2024},
+  eprint        = {2407.18003},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2407.18003}
+}
+
+@inproceedings{pte,
+  series     = {CHI ’25},
+  title      = {Plan-Then-Execute: An Empirical Study of User Trust and Team Performance When Using LLM Agents As A Daily Assistant},
+  url        = {http://dx.doi.org/10.1145/3706598.3713218},
+  doi        = {10.1145/3706598.3713218},
+  booktitle  = {Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems},
+  publisher  = {ACM},
+  author     = {He, Gaole and Demartini, Gianluca and Gadiraju, Ujwal},
+  year       = {2025},
+  month      = apr,
+  pages      = {1–22},
+  collection = {CHI ’25}
+}
+
+@online{mcp-servers,
+  title       = {ModelContextProtocol - available public servers},
+  url         = {https://github.com/modelcontextprotocol/servers},
+  urldate     = {2025-04-30},
+  hyphenation = {english}
+}
+
+@article{pixtral,
+  title   = {Pixtral 12B},
+  author  = {Pravesh Agrawal and Szymon Antoniak and Emma Bou Hanna and Devendra Singh Chaplot and Jessica Chudnovsky and Saurabh Garg and Th{\'e}ophile Gervet and Soham Ghosh and Am'elie H'eliou and Paul Jacob and Albert Q. Jiang and Timoth{\'e}e Lacroix and Guillaume Lample and Diego de Las Casas and Thibaut Lavril and Teven Le Scao and Andy Lo and William Marshall and Louis Martin and Arthur Mensch and Pavankumar Reddy Muddireddy and Valera Nemychnikova and Marie Pellat and Patrick von Platen and Nikhil Raghuraman and Bap-tiste Rozi{\`e}re and Alexandre Sablayrolles and Lucile Saulnier and Ro-main Sauvestre and Wendy Shang and Roman Soletskyi and Lawrence Stewart and Pierre Stock and Joachim Studnia and Sandeep Subramanian and Sagar Vaze and Thomas Wang},
+  journal = {ArXiv},
+  year    = {2024},
+  volume  = {abs/2410.07073},
+  url     = {https://api.semanticscholar.org/CorpusID:273229118}
+}
+
+@misc{vlm_in_charts,
+  title         = {Unraveling the Truth: Do VLMs really Understand Charts? A Deep Dive into Consistency and Robustness},
+  author        = {Srija Mukhopadhyay and Adnan Qidwai and Aparna Garimella and Pritika Ramu and Vivek Gupta and Dan Roth},
+  year          = {2024},
+  eprint        = {2407.11229},
+  archiveprefix = {arXiv},
+  primaryclass  = {cs.CL},
+  url           = {https://arxiv.org/abs/2407.11229}
+}
+
+@article{alphafold3,
+author = {Abramson, Josh and Adler, Jonas and Dunger, Jack and Evans, Richard and Green, Tim and Pritzel, Alexander and Ronneberger, Olaf and Willmore, Lindsay and Ballard, Andrew and Bambrick, Joshua and Bodenstein, Sebastian and Evans, David and Hung, Chia-Chun and O’Neill, Michael and Reiman, David and Tunyasuvunakool, Kathryn and Wu, Zachary and Žemgulytė, Akvilė and Arvaniti, Eirini and Jumper, John},
+year = {2024},
+month = {05},
+pages = {493-500},
+title = {Accurate structure prediction of biomolecular interactions with AlphaFold 3},
+volume = {630},
+journal = {Nature},
+doi = {10.1038/s41586-024-07487-w}
+}
+
+%% ------- examples ---------
