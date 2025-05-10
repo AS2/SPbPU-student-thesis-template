@@ -1,0 +1,832 @@
+\chapter{Используемые инструменты}\label{appendix-tools}							% Заголовок
+
+Описание всех доступных инструментов стоит разбить на две части: инструменты агента 
+кодогенерации ExCodeAgent-MM и всей MAS 
+
+\section{Список инструментов апробации ExCodeAgent-MM}\label{appendix-tools:sec1}
+
+Полный список инструментов с их англоязычным ``кратким'' описанием, составленным пользователем для 
+Coarse фильтрации:
+\begin{enumerate}
+	\item ``cloudml\_manager'' - ``A module for working with ClearML infrastructure: 
+to manage connections, working with cloud data in datasets, logging models and etc.'';
+	\item ``deconvolution\_module'' - ``Class which provides all requirement functions for DL deconvolution tasks.'';
+	\item ``denoizing\_module'' - ``Class which provides functions for noise reduction from 3D images 
+(aka deconvolution algorithms).'';
+	\item ``biobert\_module'' - ``Module for working with brain activity signals.'';
+	\item ``spinetool\_module'' - ``Module with different methods for working with dendritic spines.''.
+\end{enumerate}
+
+PyDoc документация 'cloudml\_manager':
+\begin{lstlisting}
+	Help on package cloudml_manager:
+
+	NAME
+		cloudml_manager - Package for organizing access to various laboratory resources stored in ClearML infrastructure.
+	
+	DESCRIPTION
+		For correct operation and organization of resources it is recommended to use provided modules of this package for access to objects.
+		After obtaining the resource it is recommended to use the original ClearML package.
+		
+		Recommended for using with 'dotenv' module and load_dotenv() function
+	
+	PACKAGE CONTENTS
+		initconnection
+		labdataset
+		labproject
+		usergroups
+	
+	CLASSES
+		builtins.object
+			cloudml_manager.initconnection.InitConnection
+			cloudml_manager.labdataset.LabDataset
+			cloudml_manager.labproject.LabProject
+			cloudml_manager.usergroups.UserGroups
+		
+		class InitConnection(builtins.object)
+		 |  Class for initializing connections with different static methods
+		 |  
+		 |  Static methods defined here:
+		 |  
+		 |  init_with_env_vars(web_server: str = 'CLEARML_WEB_HOST', api_server: str = 'CLEARML_API_HOST', files_server: str = 'CLEARML_FILES_HOST', credentials_access_key: str = 'CLEARML_API_ACCESS_KEY', credentials_secret_key: str = 'CLEARML_API_SECRET_KEY', s3_access_key: str = 'CLEARML_S3_ACCESS_KEY', s3_secret_key: str = 'CLEARML_S3_SECRET_KEY', s3_host: str = 'CLEARML_S3_HOST', s3_region: str = 'CLEARML_S3_REGION')
+		 |      Init config file in home directory for different operating systems by using specified enviroment variables.
+		 |      Static method.
+		 |      Tip: for uploading enviroment variables - use 'dotenv' module with load_dotenv()
+		 |      
+		 |      Args:
+		 |          web_server (str): enviroment variable name with ClearML web server URI. By default: "CLEARML_WEB_HOST"
+		 |          api_server (str): enviroment variable name with ClearML API server URI. By default: "CLEARML_API_HOST"
+		 |          files_server (str): enviroment variable name with ClearML files server URI. By default: "CLEARML_FILES_HOST"
+		 |          credentials_access_key (str): enviroment variable name with user's acces key to ClearML. By default: "CLEARML_API_ACCESS_KEY"
+		 |          credentials_secret_key (str): enviroment variable name with user's secret key to ClearML. By default: "CLEARML_API_SECRET_KEY"
+		 |          s3_access_key (str): enviroment variable name with user's acess key to s3 bucket. By default: "CLEARML_S3_ACCESS_KEY"
+		 |          s3_secret_key (str): enviroment variable name with user's secret key to s3 bucket. By default: "CLEARML_S3_SECRET_KEY"
+		 |          s3_host (str): enviroment variable name with s3 service host. By default: "CLEARML_S3_HOST"
+		 |          s3_region (str): enviroment variable name with user's secret key to s3 bucket. By default: "CLEARML_S3_REGION"
+		 |      
+		 |      Returns:
+		 |          None
+		 |      
+		 |      Raises:
+		 |          None
+		 |  
+		 |  init_with_python_vars(web_server: str, api_server: str, files_server: str, credentials_access_key: str, credentials_secret_key: str, s3_access_key: str, s3_secret_key: str, s3_host: str = 's3.yandexcloud.net', s3_region: str = 'ru-central1')
+		 |      Init config file in home directory for different operating systems. Static private method for other authentication methods.
+		 |      
+		 |      Args:
+		 |          web_server (str): URI to ClearML web server
+		 |          api_server (str): URI to ClearML API server
+		 |          files_server (str): URI to ClearML files server
+		 |          credentials_access_key (str): user's service access key in ClearML infrastructure
+		 |          credentials_secret_key (str): user's service secret key in ClearML infrastructure
+		 |          s3_access_key (str): service account's access key (from Yandex Object storage or any different non-AWS S3 storage)
+		 |          s3_secret_key (str): service account's secret key (from Yandex Object storage or any different non-AWS S3 storage)
+		 |          s3_host (str): host of non-AWS S3 storage. By default: yandex host aka 's3.yandexcloud.net'
+		 |          s3_region (str): region of non-AWS S3 storage. By default: yandex region aka 'ru-central1'
+		 |      
+		 |      Returns:
+		 |          None
+		 |      
+		 |      Raises:
+		 |          None
+		 |  
+		 |  ----------------------------------------------------------------------
+		 |  Data descriptors defined here:
+		 |  
+		 |  __dict__
+		 |      dictionary for instance variables (if defined)
+		 |  
+		 |  __weakref__
+		 |      list of weak references to the object (if defined)
+		
+		class LabDataset(builtins.object)
+		 |      Class for managing access to datasets, claimed to some laboratory. Contains only static methods.
+		 |  
+		 |      Some methods (like 'LabDataset.create' and 'LabDataset.get') returns instances of 'ClearML.Dataset' type.
+		 |      'ClearML.Dataset' - is an abstract, which describes dataset in ClearML infrastructure with stored in specific storage files and other info. 
+		 |      This abstract provides access to different operations. For example:
+		 |      1) To upload files FROM local storage to a ClearML dataset, you need to call method '.add_files(dir_with_files_path)' of 'ClearML.Dataset' instance:
+		 |  'dir_with_files_path' - is the only argument for the method. After adding files, there is a strict requirement to call methods '.upload()' (to upload added files in specific storage) and '.finalize()' to finalize all changes.
+		 |      2) To download files FROM dataset TO local storage, you can use method '.get_mutable_local_copy(dir_where_save_dataset_path) of 'ClearML.Dataset' instance. Important, that after downloading files, there is no needs to call '.finalize()' method to finalize work with dataset: on the contrary, it can lead to errors.
+		 |  
+		 |  Static methods defined here:
+		 |  
+		 |  create(login: str, lab_name: str, dataset_project: str, dataset_name: str, uri_path: str, parent_datasets: List[Any] = [], dataset_version: Optional[str] = None, description: Optional[str] = None) -> clearml.datasets.dataset.Dataset
+		 |      Create Dataset instance in ClearML infrastructure for some laboratory project. Static method.
+		 |      For additional info: look in 'Dataset.create()' method from ClearML.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |          dataset_project (str): name of project, by which will be claimed dataset
+		 |          dataset_name (str): name of dataset
+		 |          uri_path (str): path to folder in s3, where must be stored dataset
+		 |          parent_datasets (tp.List[tp.Any]): list of parents datasets' ids. Datasets' content will be inheritance in this dataset. By default: None.
+		 |          dataset_version (tp.Optional[str]): optional parameter. Sets the version of dataset. If not specified, the dataset's version will be autoincremented from previous version.
+		 |          description (tp.Optional[str]): optional parameter. Defines text description of dataset. By default: None.
+		 |      
+		 |      Returns:
+		 |          clearml.Dataset: created instance of ClearML Dataset type, claimed to specific laboratory and project.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  get(login: str, lab_name: str, dataset_project: str, dataset_name: str, dataset_id: Optional[str] = None, dataset_version: Optional[str] = None)
+		 |      Get alreay existed some laboratory project's dataset from ClearML infrastructure. Static method.
+		 |      For additional info: look in 'Dataset.get()' method from ClearML.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |          dataset_project (str): name of project, by which will be claimed dataset
+		 |          dataset_name (str): name of dataset
+		 |          dataset_id (tp.Optional[str]): optional parameter. Dataset's ID. By default: None.
+		 |          dataset_version (tp.Optional[str]): optional parameter. Dataset's version. By default: None.
+		 |      
+		 |      Returns:
+		 |          clearml.Dataset: founded already existed ClearML Dataset, claimed to specific laboratory and project.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  get_all_dataset_names(login: str, lab_name: str)
+		 |      Returns all datasets, which are claimed to some laboratory. Static method.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |      Returns:
+		 |          tp.List[clearml.Dataset]: list of datasets, which are claimed to laboratory
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  get_lab_project_datasets(login: str, lab_name: str, project_name: str)
+		 |      Returns all datasets, which are claimed to some laboratory project. Static method.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |      Returns:
+		 |          tp.List[clearml.Dataset]: list of datasets, which are claimed to laboratory
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  ----------------------------------------------------------------------
+		 |  Data descriptors defined here:
+		 |  
+		 |  __dict__
+		 |      dictionary for instance variables (if defined)
+		 |  
+		 |  __weakref__
+		 |      list of weak references to the object (if defined)
+		
+		class LabProject(builtins.object)
+		 |  Class for managing working with ClearML tasks and projects, which are claimed to some laboratory and projects. Contains only static methods.
+		 |  
+		 |  The main task of this class: to provide access and information about 'ClearML.Task' instances, which are assigned not only to projects, but also to some other labs.
+		 |  
+		 |  The 'ClearML.Task' class and its methods allow you to create and manage experiments and model training, as well as perform advanced experimentation functions such as autoML.
+		 |  
+		 |  Static methods defined here:
+		 |  
+		 |  get_all_project_names(login: str, lab_name: str) -> List
+		 |      Get all projects from laboratory by name laboratory name. Static method.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |      
+		 |      Returns:
+		 |          list: list of all projects of passed laboratory.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  get_all_project_tasks(login: str, lab_name: str, project_name: str) -> List[clearml.task.Task]
+		 |      Get all tasks claimed by projects. Static method.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |          project_name (str): claimed to laboratory project name
+		 |      
+		 |      Returns:
+		 |          tp.List[clearml.Task]: list of all tasks of passed laboratory project.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  get_task_by_name(login: str, lab_name: str, project_name: str, task_name: str) -> clearml.task.Task | None
+		 |      Get laboratory project task by name. Static method.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |          project_name (str): name of project, by which will be claimed task
+		 |          task_name (str): name of task
+		 |      
+		 |      Returns:
+		 |          clearml.Task or None: clearml.Task - if founded task; None - if not founded.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  init(login: str, lab_name: str, project_name: str, task_name: str, uri_path: str, force_reuse: bool = False) -> clearml.task.Task
+		 |      Create task instance in ClearML infrastructure for some laboratory project. Static method.
+		 |      For additional info: look in 'Task.init()' method from ClearML.
+		 |      
+		 |      Args:
+		 |          login (str): login of laboratory person
+		 |          lab_name (str): laboratory name
+		 |          project_name (str): name of project, by which will be claimed task
+		 |          task_name (str): name of task
+		 |          uri_path (str): path to folder in s3, where must be stored task and his artifacts
+		 |          force_reuse (bool): optional argument. Forcing reusing old task if task with passed arguments is existed. If True - returns old task, if False - raised an exception. By default: False.
+		 |      
+		 |      Returns:
+		 |          clearml.Task: created instance of ClearML Task type, claimed to specific laboratory and project.
+		 |      
+		 |      Raise:
+		 |          Exception: Description of raised error
+		 |  
+		 |  ----------------------------------------------------------------------
+		 |  Data descriptors defined here:
+		 |  
+		 |  __dict__
+		 |      dictionary for instance variables (if defined)
+		 |  
+		 |  __weakref__
+		 |      list of weak references to the object (if defined)
+		
+		class UserGroups(builtins.object)
+		 |  Class for managing access to laboratories and thier personal in ClearML infrastructure. Contains only static methods.
+		 |  
+		 |  Static methods defined here:
+		 |  
+		 |  check_lab_existance(lab_name: str)
+		 |      Method for checking is lab exists
+		 |      
+		 |      Args:
+		 |          lab_name (str): laboratory name
+		 |      
+		 |      Returns:
+		 |          bool: is laboratory existed in ClearML infrastructure.
+		 |      
+		 |      Raise:
+		 |          None
+		 |  
+		 |  check_user_access(login: str, lab_name: str)
+		 |      Method for checking user access to a lab
+		 |      
+		 |      Args:
+		 |          login (str): users login
+		 |          lab_name (str): laboratory name
+		 |      
+		 |      Returns:
+		 |          bool: is user have acces to a laboratory.
+		 |      
+		 |      Raise:
+		 |          None
+		 |  
+		 |  get_accessed_labs(login: str)
+		 |      Get list of accessed labs to some user
+		 |      
+		 |      Args:
+		 |          login (str): users login
+		 |      
+		 |      Returns:
+		 |          tp.List[str]: list of available laboratories.
+		 |      
+		 |      Raise:
+		 |          None
+		 |  
+		 |  ----------------------------------------------------------------------
+		 |  Data descriptors defined here:
+		 |  
+		 |  __dict__
+		 |      dictionary for instance variables (if defined)
+		 |  
+		 |  __weakref__
+		 |      list of weak references to the object (if defined)
+	
+	DATA
+		__all__ = ['InitConnection', 'LabDataset', 'LabProject', 'UserGroups']
+	
+	FILE
+		/home/alex/Documents/GitHub/mas_workflow/.venv/lib/python3.10/site-packages/cloudml_manager/__init__.py	
+\end{lstlisting}
+
+Документация 'deconvolution\_module':
+\begin{lstlisting}
+	Help on module deconvolution_module:
+
+NAME
+    deconvolution_module
+
+CLASSES
+    builtins.object
+        DeconvolutionModule
+    
+    class DeconvolutionModule(builtins.object)
+     |  3D monochrome images deconvolution class.
+     |  Provides different usefull static methods for increasing resolution of 3D microscopic images using deconvolution algorithms
+     |  
+     |  Static methods defined here:
+     |  
+     |  load_3d_img(path: str) -> numpy.ndarray
+     |      Method for uploading 3d image as numpy array
+     |      
+     |      Args:
+     |          path(str): path to image file on local storage
+     |      
+     |      Returns:
+     |          np.ndarray - a 3D numpy array with image
+     |      
+     |      Raise:
+     |          FileNotFoundError - when path to image is invalid or image in this path is not existing
+     |  
+     |  make_deconvolution(image: numpy.ndarray, weights_path_folder: str = './') -> numpy.ndarray
+     |      Function for making AI deconvolution for 3D normalized image with mono color type.
+     |      
+     |      Args:
+     |          image (np.ndarray): 3d array of image with [LAYERS, WIDTH, HEIGHT] axes. Must be mono and normalized in [0; 1] interval
+     |          weights_path_folder (string): path to directory, where 'best_weight.txt' from training are saved. By default: './'
+     |      Returns:
+     |          np.ndarray - result of deconvolution: normalized and deconvolved mono image.
+     |      
+     |      Raise:
+     |          FileNotFoundError - exception if 'weights_path_folder' folder doesn't contains
+     |  
+     |  make_normalization_neg(image: numpy.ndarray) -> numpy.ndarray
+     |      Normalizing image to [-1;1] interval function.
+     |      
+     |      Args:
+     |          image (np.ndarray): image with any shape
+     |      
+     |      Returns:
+     |          np.ndarray - normalized image
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  same_padding(image: numpy.ndarray, padding_size: int)
+     |      Creating padding along the Z axis of the input 3D image of shape (n_layers, n_rows, n_columns) with same values as in edge layers along OZ.
+     |      
+     |      Args:
+     |          image (np.ndarray): 3D numpy image with any shape of (n_layers, n_rows, n_columns) type.
+     |          padding_size (int): size of padding along Z axis in both sidex. Must be positive.
+     |      
+     |      Returns:
+     |          np.ndarray - image with paddings of size (n_layers + 2 * padding_size, n_rows, n_columns)
+     |      
+     |      Raise:
+     |          ValueError - if padding_size is negative or equals zero.
+     |  
+     |  save_3d_img(file_name: str, image_3d: numpy.ndarray) -> None
+     |      Method for saving images into file on local storage
+     |      
+     |      Args:
+     |          img_path(str): image path to save file
+     |      
+     |          image_3d(np.ndarray): image with any shape
+     |      
+     |      Returns:
+     |          np.ndarray - a 3D numpy array with image
+     |      
+     |      Raise:
+     |          FileNotFoundError - when path to image is invalid or image in this path is not existing
+     |  
+     |  shading_padding(image: numpy.ndarray, padding_size: int)
+     |      Creating padding with along Z-axis in 3D image of shape (n_layers, n_rows, n_columns), which are firstly replicate edge layers of origin image and when shading into zeros.
+     |      
+     |      Args:
+     |          image (np.ndarray): 3D numpy image with any shape of (n_layers, n_rows, n_columns) type.
+     |          padding_size (int): size of padding along Z axis in both sidex. Must be positive.
+     |      
+     |      Returns:
+     |          np.ndarray - image with paddings of size (n_layers + 2 * padding_size, n_rows, n_columns)
+     |      
+     |      Raise:
+     |          ValueError - if padding_size is negative or equals zero.
+     |  
+     |  train_model(model_path_save: str, data_for_training_path: str, learning_conf: Dict = None) -> bool
+     |      Function for training DL deconvolution method using 3D images in some folder
+     |      
+     |      Args:
+     |          model_path_save(str): path to folder where the best model will be saved - will be saved as 'best_weights.txt' file;
+     |          data_for_training_path(str): path with seed images, which will be used for data
+     |          learning_conf(Dict): optional. Config with different variables for model training:
+     |           - learning_conf['lr'] (float): basic learning rate;
+     |           - learning_conf['epochs'] (int): epochs count;
+     |           - learning_conf['train_test_split'] (float; in (0; 1)): splitting coef in generated data for train and test datasets;
+     |      
+     |      Returns:
+     |          bool: True - if learning completes good;
+     |      
+     |      Raises:
+     |          None
+     |  
+     |  visualize_3d_image(img: numpy.ndarray, xy_resolution: float = 1.0, z_resolution: float = 1) -> matplotlib.figure.Figure
+     |      Visualize 3d image with matplotlib 'Figure' class instance.
+     |      
+     |      Args:
+     |          img (np.ndarray): 3d image with any size along X, Y and Z axes
+     |          xy_resolution (float): resolution image along X and Y axes. Don't use them when it is unknown. By default: 1.0
+     |          z_resolution (float): resolution image along Z axis. Don't use it when it is unknown. By default: 1.0
+     |      
+     |      Returns:
+     |          matplotlib.figure.Figure - Figure (chart) with 3d flattened image
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  zero_padding(image: numpy.ndarray, padding_size: int)
+     |      Creating padding with zeros along Z-axis in 3D image of shape (n_layers, n_rows, n_columns).
+     |      
+     |      Args:
+     |          image (np.ndarray): 3D numpy image with any shape of (n_layers, n_rows, n_columns) type.
+     |          padding_size (int): size of padding along Z axis in both sidex. Must be positive.
+     |      
+     |      Returns:
+     |          np.ndarray - image with paddings of size (n_layers + 2 * padding_size, n_rows, n_columns)
+     |      
+     |      Raise:
+     |          ValueError - if padding_size is negative or equals zero.
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    Dict = typing.Dict
+        A generic version of dict.
+
+FILE
+    /home/alex/Documents/GitHub/sandbox/deconvolution_module.py
+\end{lstlisting}
+
+Документация 'denoizing\_module':
+\begin{lstlisting}
+	Help on module denoizing_module:
+
+NAME
+    denoizing_module
+
+CLASSES
+    builtins.object
+        DenoizingModule
+    
+    class DenoizingModule(builtins.object)
+     |  3D monochrome images denoizing class.
+     |  Provides different usefull static methods for removing poisson noise in 3D confocal microscopic images
+     |  
+     |  Static methods defined here:
+     |  
+     |  load_3d_img(path: str) -> numpy.ndarray
+     |      Method for uploading 3d image as numpy array
+     |      
+     |      Args:
+     |          path(str): path to image file on local storage
+     |      
+     |      Returns:
+     |          np.ndarray - a 3D numpy array with image
+     |      
+     |      Raise:
+     |          FileNotFoundError - when path to image is invalid or image in this path is not existing
+     |  
+     |  make_denoizing(image: numpy.ndarray, weights_path_folder: str = './') -> numpy.ndarray
+     |      Function for making AI noise removing for 3D normalized image with mono color type.
+     |      
+     |      Args:
+     |          image (np.ndarray): 3d array of image with [LAYERS, WIDTH, HEIGHT] axes. Must be mono and normalized in [0; 1] interval
+     |          weights_path_folder (string): path to directory, where 'best_weight.txt' from training are saved. By default: './'
+     |      Returns:
+     |          np.ndarray - result of deconvolution: normalized and deconvolved mono image.
+     |      
+     |      Raise:
+     |          FileNotFoundError - exception if 'weights_path_folder' folder doesn't contains
+     |  
+     |  make_minmax_normalization_in_onenegone(image: numpy.ndarray) -> numpy.ndarray
+     |      Minmax normalizing image to [-1;1] interval function.
+     |      
+     |      Args:
+     |          image (np.ndarray): image with any shape
+     |      
+     |      Returns:
+     |          np.ndarray - normalized image
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  save_3d_img(file_name: str, image_3d: numpy.ndarray) -> None
+     |      Method for saving images into file on local storage
+     |      
+     |      Args:
+     |          img_path(str): image path to save file
+     |      
+     |          image_3d(np.ndarray): image with any shape
+     |      
+     |      Returns:
+     |          np.ndarray - a 3D numpy array with image
+     |      
+     |      Raise:
+     |          FileNotFoundError - when path to image is invalid or image in this path is not existing
+     |  
+     |  train_model(model_path_save: str, data_for_training_path: str, learning_conf: Dict = None) -> bool
+     |      Function for training DL denoizing method using 3D images in some folder
+     |      
+     |      Args:
+     |          model_path_save(str): path to folder where the best model will be saved - will be saved as 'best_weights.txt' file;
+     |          data_for_training_path(str): path with seed images, which will be used for data
+     |          learning_conf(Dict): optional. Config with different variables for model training:
+     |           - learning_conf['lr'] (float): basic learning rate;
+     |           - learning_conf['epochs'] (int): epochs count;
+     |           - learning_conf['train_test_split'] (float; in (0; 1)): splitting coef in generated data for train and test datasets;
+     |      
+     |      Returns:
+     |          bool: True - if learning completes good;
+     |      
+     |      Raises:
+     |          None
+     |  
+     |  visualize_3d_image(img: numpy.ndarray, xy_resolution: float = 1.0, z_resolution: float = 1) -> matplotlib.figure.Figure
+     |      Visualize 3d image with matplotlib 'Figure' class instance.
+     |      
+     |      Args:
+     |          img (np.ndarray): 3d image with any size along X, Y and Z axes
+     |          xy_resolution (float): resolution image along X and Y axes. Don't use them when it is unknown. By default: 1.0
+     |          z_resolution (float): resolution image along Z axis. Don't use it when it is unknown. By default: 1.0
+     |      
+     |      Returns:
+     |          matplotlib.figure.Figure - Figure (chart) with 3d flattened image
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    Dict = typing.Dict
+        A generic version of dict.
+
+FILE
+    /home/alex/Documents/GitHub/sandbox/denoizing_module.py	
+\end{lstlisting}
+
+Документация 'bio\_bert\_module':
+\begin{lstlisting}
+	Help on module bio_bert_module:
+
+NAME
+    bio_bert_module
+
+CLASSES
+    builtins.object
+        BioBert
+    
+    class BioBert(builtins.object)
+     |  BioBERT module. Provides working with brain activity signals using different methods.
+     |  
+     |  Main purposes of class - povide static methods for analysing and transforming activity signals.
+     |  
+     |  Static methods defined here:
+     |  
+     |  classify_signal(signal: numpy.ndarray, txt_res_path: str = None) -> int
+     |      Classify mouse disease based on brain activity signal using BioBERT model.
+     |      Result can be printed in stdout or in some text file, if 'txt_res_path' is specified.
+     |      
+     |      Args:
+     |          signal (np.ndarray): brain signal array
+     |      
+     |      Returns:
+     |          str - name of disease
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  generate_manifold(signal: numpy.ndarray) -> numpy.ndarray
+     |      Generating signal manifold.
+     |      
+     |      Args:
+     |          signal (np.ndarray): brain signal array
+     |      
+     |      Returns:
+     |          np.ndarray - generated manifold
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  read_signal(path: str) -> numpy.ndarray
+     |      Loading brain activity signal stored in npy format.
+     |      The brain activity signal should be 2D numpy array with two axes: (n_lenght, n_features).
+     |      Each feature is an activity of some neuron, capture from camera.
+     |      
+     |      Args:
+     |          path (str): path to a file
+     |      
+     |      Returns:
+     |          np.ndarray - uploaded signal array.
+     |      
+     |      Raise:
+     |          FileNotFoundError - if 'path' file doesn't exist
+     |  
+     |  std_normalize_signals_features(signal: numpy.ndarray) -> numpy.ndarray
+     |      Normalize features of brain activity signal using std normalization algorithm
+     |      
+     |      Args:
+     |          signal (np.ndarray): brain signal array
+     |      
+     |      Returns:
+     |          np.ndarray: normalized signal
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+FILE
+    /home/alex/Documents/GitHub/sandbox/bio_bert_module.py
+\end{lstlisting}
+
+Документация 'spinetool\_module':
+\begin{lstlisting}
+	Help on module spinetool_module:
+
+NAME
+    spinetool_module
+
+CLASSES
+    builtins.object
+        SpineTool
+    
+    class SpineTool(builtins.object)
+     |  Spinetool module. Provides basic methods for working with dendritic spines.
+     |  
+     |  Static methods defined here:
+     |  
+     |  build_chords_hist_vector(off_spine: numpy.ndarray, chords_cnt: int, bins_count: int) -> numpy.ndarray
+     |      Build vector of some spine with shape (bins_count,), which represents histogram of lenghts of chords inside 3D spine mesh.
+     |      
+     |      Args:
+     |          off_spine (np.ndarray): spine mesh
+     |          chords_cnt (int): count of chords to build
+     |          bins_count (int): bins count in histogram
+     |      
+     |      Returns:
+     |          np.ndarray - array of histogram bins values with shape (bins_count,)
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  load_spine_off(path: str) -> numpy.ndarray
+     |      Loading dendritic spine stored in OFF file format.
+     |      
+     |      Args:
+     |          path (str): path to a spine *.off file
+     |      
+     |      Returns:
+     |          np.ndarray - uploaded *.off file spine mesh.
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  resize(spine_mesh: numpy.ndarray, scale: float) -> numpy.ndarray
+     |      Resizing dendritic spine mesh method.
+     |      
+     |      Args:
+     |          spine_mesh (np.ndarray): np.ndarray mesh of a spine
+     |          scale (float): scale factor
+     |      
+     |      Returns:
+     |          np.ndarray - resized spine mesh
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  save_spine_off(spine_off: numpy.ndarray, path: str) -> None
+     |      Save spine mesh as a *.OFF file.
+     |      
+     |      Args:
+     |          spine_off (np.ndarray): spine mesh numpy array
+     |          path (str): path to a spine *.off file
+     |      
+     |      Returns:
+     |          None.
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  shift(spine_mesh: numpy.ndarray, shift_params: Tuple[float, float, float]) -> numpy.ndarray
+     |      Shifting dendritic spine mesh method.
+     |      
+     |      Args:
+     |          spine_mesh (np.ndarray): np.ndarray mesh of a spine
+     |          shift_params (Tuple[float, float, float]): shift along X-Y-Z axes tuple
+     |      
+     |      Returns:
+     |          np.ndarray - shited spine mesh
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  visualize_clusters(spines: List[numpy.ndarray], clusters_count: int, method: str = 't-SNE')
+     |      Complete kNN algorithms on spines features with speciic clusters count.
+     |      After that - visualize results using some specific algorithm of dimensionality reduction using matplotlib.
+     |      
+     |      Args:
+     |          spines (np.ndarray): list with spines feature. Each element - set of features (n_feature, ) of one spine
+     |          clusters_count (int): clusters count for kNN algorithm
+     |          method (str): name of dimensionality reduction algorithm. Should be one of them:
+     |           - 't-SNE': t-Distributed Stochastic Neighbor Embedding;
+     |           - 'PCA': Principal Component Analysis;
+     |           - 'LDA': Linear Discriminant Analysis;
+     |           - 'UMAP': Uniform Manifold Approximation and Projection.
+     |      
+     |      Returns:
+     |          matplotlib.Figure - plot with visualiing of clusters
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  zernike_moments(off_spine: numpy.ndarray, moments_cnt: int) -> numpy.ndarray
+     |      Generate zernike moments of 3d spine mesh.
+     |      
+     |      Args:
+     |          off_spine (np.ndarray): spine mesh
+     |          moments_cnt (int): moments count
+     |      
+     |      Returns:
+     |          np.ndarray - array of zernike moments' coefficients in float
+     |      
+     |      Raise:
+     |          None
+     |  
+     |  ----------------------------------------------------------------------
+     |  Data descriptors defined here:
+     |  
+     |  __dict__
+     |      dictionary for instance variables (if defined)
+     |  
+     |  __weakref__
+     |      list of weak references to the object (if defined)
+
+DATA
+    List = typing.List
+        A generic version of list.
+    
+    Tuple = typing.Tuple
+        Tuple type; Tuple[X, Y] is the cross-product type of X and Y.
+        
+        Example: Tuple[T1, T2] is a tuple of two elements corresponding
+        to type variables T1 and T2.  Tuple[int, float, str] is a tuple
+        of an int, a float and a string.
+        
+        To specify a variable-length tuple of homogeneous type, use Tuple[T, ...].
+
+FILE
+    /home/alex/Documents/GitHub/sandbox/spinetool_module.py	
+\end{lstlisting}
+
+Здесь важно отметить следующее: некоторые модули и методы являются \textit{мокап} модулями и методами. Это значит,
+что они не выполняют в действительности свой функционал, а выполняют некоторое другое, ожидаемое поведение.
+Такое решение может показаться ``нечестным'' в условиях апробации, но стоит отметить две причины, по которой
+это решение валидное и приемлемое в рамках тестирования:
+\begin{itemize}
+	\item неопределенность результата: методы, свзянные со стохастическими алгоритмами, имеют неопределенный 
+конечный результат, валидация и корректность которого представляется трудной. Замена истинного алгоритма на 
+некоторый другой иммитирующий алгоритм с детерминированным выводом позволяет получить однозначный результат для
+валидации;
+	\item инвариантность для LLM-модели: сама модель не видит то, что происходит внутри функции - она 
+осуществляет вывод, опираясь на документацию и сигнатуру вызова. Исполняется ли при вызове функций настоящий
+алгоритм или некоторый иммитирующий алгоритм - информация, остающаяся недоступной для LLM. Это позволяет 
+проецировать результаты тестирования с иммитирующими алгоримтмами на ожидаемое поведение;
+\end{itemize}
+
+\section{Список инструментов ExCodeAct}\label{appendix-tools:sec2}
+
+Полный список прочих, не кодовых инструментов, принимающих участие в тестировании
+(например, мультимодальности в \ref{appendix-multimodal}), следующий:
+\begin{itemize}
+	\item 
+\end{itemize}

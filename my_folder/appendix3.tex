@@ -1,0 +1,59 @@
+\chapter{Пример использования мультимодальности инструмента}\label{appendix-multimodal}
+
+Ниже представлен вывод мультимодального агента ExCodeAgent-MM с примером анализа размытого и точного
+изображения нейрона. Сравнение выводов представлено в основном тексте работы. 
+
+\begin{figure}
+	
+\end{figure}
+
+\section{Вывод мультимодального результата}\label{appendix-multimodal:sec1}
+
+\begin{lstlisting}
+Here is the result of deconvolution of './small_neuron.tiff' image with visualizations 'before'/'after':
+
+Analysis of generated charts: To address your task of performing deconvolution on the small_neuron.tiff image and analyzing the visualizations provided, I will break down the analysis into several steps:
+Step 1: Understanding Deconvolution
+
+Deconvolution is a process used to reverse the effects of convolution on recorded data. In the context of imaging, deconvolution is often used to enhance the resolution and clarity of images, particularly in microscopy, by removing blur and noise.
+Step 2: Analyzing the Visualizations
+
+You have provided two images: one labeled "before" and the other "after." These images likely represent the state of the small_neuron.tiff image before and after deconvolution.
+Image 1: Before Deconvolution
+
+    The first image shows a neuron with a significant amount of blur and noise.
+    The intensity values are spread out, and the structure of the neuron is not clearly defined.
+    The color scale on the right indicates the intensity values, ranging from 0 to 1.0.
+
+Image 2: After Deconvolution
+
+    The second image shows the same neuron after deconvolution.
+    The neuron's structure is much clearer, with reduced blur and noise.
+    The intensity values are more concentrated, and the neuron's features are more distinct.
+    The color scale on the right indicates the intensity values, ranging from 0 to 250.
+
+Step 3: Interpreting the Results
+
+    Clarity and Resolution: The "after" image shows a significant improvement in clarity and resolution compared to the "before" image. This indicates that the deconvolution process was successful in enhancing the image quality.
+    Intensity Values: The intensity values in the "after" image are higher and more concentrated, suggesting that the deconvolution process has effectively removed noise and blur, allowing the true signal to be more prominent.
+    Structural Details: The neuron's structure is more defined in the "after" image, with clearer boundaries and features. This is crucial for analyzing the neuron's morphology and function.
+
+Step 4: Linking Textual Output and Visualizations
+
+If there was any textual output provided (e.g., numerical data, error messages), it would be useful to correlate it with the visualizations. For example:
+
+    Numerical Data: If the textual output included metrics such as signal-to-noise ratio (SNR) or resolution improvement, these could be directly linked to the visual improvements seen in the images.
+    Error Messages: Any error messages could indicate issues with the deconvolution process, such as incomplete data or algorithmic limitations.
+
+Step 5: Conclusions and Recommendations
+
+    Conclusion: The deconvolution process has successfully enhanced the small_neuron.tiff image, improving clarity, resolution, and structural detail.
+    Recommendations:
+        Continue using deconvolution for similar images to improve analysis and interpretation.
+        Further optimize the deconvolution parameters to achieve even better results.
+        Validate the deconvolution process with additional images to ensure consistency and reliability.
+
+Final Thoughts
+The visualizations provide a clear and compelling demonstration of the effectiveness of the deconvolution process. By comparing the "before" and "after" images, it is evident that the deconvolution has significantly improved the image quality, making it more suitable for detailed analysis.
+
+\end{lstlisting}

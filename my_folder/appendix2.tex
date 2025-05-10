@@ -1,73 +1,134 @@
-\chapter{Некоторые дополнительные примеры}\label{appendix-extra-examples}							% 
+\chapter{Используемые инструменты}\label{appendix-tools}							% Заголовок
 
-В приложении приведены формулы \eqref{eq:Pi-app}, \eqref{eq:Pi-app-}, \firef{fig:spbpu_hydrotower-app}, \firef{fig:spbpu_hydrotower-app-}, \taref{tab:ToyCompare-app}, \taref{tab:ToyCompare-app-}\footnote{Внимание! Пример оформления подстрочной ссылки (сноски).}.
+Описание всех доступных инструментов стоит разбить на две части: инструменты агента 
+кодогенерации ExCodeAgent-MM и всей MAS ExCodeAct.
 
+\section{Список инструментов апробации ExCodeAgent-MM}\label{appendix-tools:sec1}
 
-\begin{equation}% лучше не оставлять пропущенную строку (\par) перед окружениями для избежания лишних отсупов в pdf
-\label{eq:Pi-app-} % eq - equations, далее название, ch поставлено для избежания дублирования
-\pi \approx 3,141.
-\end{equation}
-%
-%
-\begin{figure}[ht!] 
-	\center
-	\includegraphics [scale=0.27] {my_folder/images//spbpu_hydrotower}
-	\caption{Вид на гидробашню СПбПУ \cite{spbpu-gallery}} 
-	\label{fig:spbpu_hydrotower-app-}  
-\end{figure}
+Полный список инструментов с их англоязычным ``кратким'' описанием, составленным пользователем для 
+Coarse фильтрации:
+\begin{enumerate}
+	\item ``cloudml\_manager'' - ``A module for working with ClearML infrastructure: 
+to manage connections, working with cloud data in datasets, logging models and etc.'';
+	\item ``deconvolution\_module'' - ``Class which provides all requirement functions for DL deconvolution tasks.'';
+	\item ``denoizing\_module'' - ``Class which provides functions for noise reduction from 3D images 
+(aka deconvolution algorithms).'';
+	\item ``biobert\_module'' - ``Module for working with brain activity signals.'';
+	\item ``spinetool\_module'' - ``Module with different methods for working with dendritic spines.''.
+\end{enumerate}
 
-\begin{table} [htbp]% Пример оформления таблицы
-	\centering\small
-	\caption{Представление данных для сквозного примера по ВКР \cite{Peskov2004}}%
-	\label{tab:ToyCompare-app-}		
-	\begin{tabular}{|l|l|l|l|l|l|}
-		\hline
-		$G$&$m_1$&$m_2$&$m_3$&$m_4$&$K$\\
-		\hline
-		$g_1$&0&1&1&0&1\\ \hline
-		$g_2$&1&2&0&1&1\\ \hline
-		$g_3$&0&1&0&1&1\\ \hline
-		$g_4$&1&2&1&0&2\\ \hline
-		$g_5$&1&1&0&1&2\\ \hline
-		$g_6$&1&1&1&2&2\\ \hline		
-	\end{tabular}	
-	\normalsize% возвращаем шрифт к нормальному
-\end{table}
+Основные классы и методы 'cloudml\_manager', принимающие участие в тестировании ExCodeAgent-MM:
+\begin{itemize}
+	\item ``LabDataset'' - класс для предоставления доступа к датасетам лабораторных проектов в 
+инфраструктуре ClearML. Представляет статические методы для получения экземпляров типа 
+``ClearML.Dataset'', через которые можно получать доступ к файлам, а также модифицировать содержание
+самих датасетов. Основные методы класса:
+	\begin{itemize}
+		\item ``def LabDataset.create(...) -> ClearML.Dataset'' - создает новый, пустой датасет в проекте
+определенной лаборатории;
+		\item ``def LabDataset.get(...) -> ClearML.Dataset'' - возвращает существующий датасет по
+имени лаборатории, проекта, и имени самого датасета.
+	\end{itemize}
 
+	\item ``InitConnection'' - класс инициализации доступа к инфраструктуре ClearML. Представляет
+два метода для инициализации файла конфигурации:
+	\begin{itemize}
+		\item ``def InitConnection.init\_with\_env\_vars() -> None'' - через уже определенные переменные 
+окружения;
+	\item ``def InitConnection.init\_with\_python\_vars(...) -> None'' - через значения, определенные
+в питоновских переменных;
+	\end{itemize}
+\end{itemize}
 
+Основные классы и методы 'deconvolution\_module', принимающие участие в тестировании ExCodeAgent-MM:
+\begin{enumerate}
+	\item ``cloudml\_manager'' - ``A module for working with ClearML infrastructure: 
+to manage connections, working with cloud data in datasets, logging models and etc.'';
+	\item ``deconvolution\_module'' - ``Class which provides all requirement functions for DL deconvolution tasks.'';
+	\item ``denoizing\_module'' - ``Class which provides functions for noise reduction from 3D images 
+(aka deconvolution algorithms).'';
+	\item ``biobert\_module'' - ``Module for working with brain activity signals.'';
+	\item ``spinetool\_module'' - ``Module with different methods for working with dendritic spines.''.
+\end{enumerate}
 
+Основные классы и методы 'deconvolution\_module', принимающие участие в тестировании ExCodeAgent-MM:
+\begin{itemize}
+	\item ``def DeconvolutionModule.load\_3d\_img(...) -> np.ndarray'' - статический метод загрузки
+изображений в формате numpy массива;
+	\item ``def DeconvolutionModule.make\_deconvolution(...) -> np.ndarray'' - мокап-метод, который 
+осуществляет деконволюцию изображения при помощи нейронной сети, опираясь на переданный путь весов 
+самой сети;
+	\item ``def DeconvolutionModule.train\_model(...) -> bool'' - мокап-метод, который
+осуществляет обучение сети на основе файлов, переданных для генерации датасета, и параметров обучения;
+	\item ``def DeconvolutionModule.save\_3d\_img(...) -> None'' - статический метод сохранения
+трехмерных изображений;
+	\item ``def DeconvolutionModule.zero\_padding(...) -> np.ndarray'' - статический метод 
+для добавления отступов вдоль оси Z, заполненных нулями;
+	\item ``def DeconvolutionModule.shading\_padding(...) -> np.ndarray'' - статический метод 
+для добавления отступов вдоль оси Z при помощи повторения крайних слоев с затуханием интенсивности;
+	\item ``def DeconvolutionModule.same\_padding(...) -> np.ndarray'' - статический метод для добавления
+отступов вдоль оси Z при помощи повторения крайних слоев;
+	\item ``def DeconvolutionModule.visualize\_3d\_image(...) -> matplotlib.Figure'' - 
+статический метод создания ``изображений-развертки'', демонстрирующее содержимое трехмерного снимка
+на плоскости.
+\end{itemize}
 
-\section{Подраздел приложения}\label{app-2-1}							
+Основные классы и методы 'denoizing\_module', принимающие участие в тестировании ExCodeAgent-MM:
+\begin{itemize}
+	\item ``def DenoizingModule.load\_3d\_img(...) -> np.ndarray'' - статический метод загрузки
+изображений в формате numpy массива;
+	\item ``def DenoizingModule.make\_denoizing(...) -> np.ndarray'' - мокап-метод, который 
+осуществляет устранение шумов изображения при помощи нейронной сети, опираясь на переданный путь весов самой сети;
+	\item ``def DenoizingModule.train\_model(...) -> np.ndarray'' - мокап-метод, который осуществляет 
+обучение сети денойзинга на основе файлов, переданных для генерации датасета, и параметров обучения;
+	\item ``def DenoizingModule.save\_3d\_img(path: str) -> np.ndarray'' - статический метод сохранения
+трехмерных изображений;
+	\item ``def DenoizingModule.visualize\_3d\_image(...) -> matplotlib.Figure'' - 
+статический метод создания ``изображений-развертки'', демонстрирующее содержимое трехмерного снимка
+на плоскости.
+\end{itemize}
 
+Основные классы и методы 'bio\_bert\_module', принимающие участие в тестировании ExCodeAgent-MM:
+\begin{itemize}
+	\item ``def BioBERT.read\_signal(...) -> np.ndarray'' - статический метод загрузки
+сигнала, хранящегося в формате `*.npy' numpy массива;
+	\item ``def DenoizingModule.classify\_signal(...) -> str'' - статический мокап-метод классификации
+болезни по активности сигнала;
+	\item ``def DenoizingModule.std\_normalize\_signals\_features(...) -> np.ndarray'' - статический 
+метод для нормализации признаков нейронной активности;
+\end{itemize}
 
-\begin{equation}% лучше не оставлять пропущенную строку (\par) перед окружениями для избежания лишних отсупов в pdf
-\label{eq:Pi-app} % eq - equations, далее название, ch поставлено для избежания дублирования
-\pi \approx 3,141.
-\end{equation}
-%
-%
-\begin{figure}[ht!] 
-	\center
-	\includegraphics [scale=0.27] {my_folder/images//spbpu_hydrotower}
-	\caption{Вид на гидробашню СПбПУ \cite{spbpu-gallery}} 
-	\label{fig:spbpu_hydrotower-app}  
-\end{figure}
+Модуль 'spinetool\_module' не использовался напрямую в тестировании ClearML-bench ввиду и без того 
+долгого времени работы тестирования, хотя на практике инструмент исследователями применяется в ряде
+научных работ. 
+Сам модуль сильно не отличается структурно от ранее перечисленных модулей: 
+он также состоит из статических методов, имеет методы как преобразующие данные, так и осуществляющие
+визаулизацию и анализ посредством различных классических алгоритмов машинного обучения.
 
-\begin{table} [htbp]% Пример оформления таблицы
-	\centering\small
-	\caption{Представление данных для сквозного примера по ВКР \cite{Peskov2004}}%
-	\label{tab:ToyCompare-app}		
-	\begin{tabular}{|l|l|l|l|l|l|}
-		\hline
-		$G$&$m_1$&$m_2$&$m_3$&$m_4$&$K$\\
-		\hline
-		$g_1$&0&1&1&0&1\\ \hline
-		$g_2$&1&2&0&1&1\\ \hline
-		$g_3$&0&1&0&1&1\\ \hline
-		$g_4$&1&2&1&0&2\\ \hline
-		$g_5$&1&1&0&1&2\\ \hline
-		$g_6$&1&1&1&2&2\\ \hline		
-	\end{tabular}	
-	\normalsize% возвращаем шрифт к нормальному
-\end{table}
+Здесь важно отметить следующее: некоторые модули и методы применялись в формате \textit{мокап} 
+модулей и методаов. Это значит, что они не выполняют в действительности описанный функционал, 
+а выполняют некоторое другое, ожидаемое в процессе тестирование действие.
+Такое решение может показаться ``нечестным'' в условиях апробации, но стоит отметить две причины, 
+по которой это решение валидное и приемлемое в рамках тестирования:
+\begin{itemize}
+	\item неопределенность результата: методы, работающие со стохастическими алгоритмами, 
+имеют неопределенный конечный результат, валидация и корректность которого представляется трудной. 
+Замена истинного алгоритма на некоторый другой иммитирующий алгоритм с детерминированным 
+выводом позволяет получить однозначный результат для последующей валидации;
+	\item инвариантность для LLM-модели: сама модель не видит то, что происходит внутри функции - она 
+осуществляет вывод, опираясь на документацию и сигнатуру функции. Исполняется ли при вызове настоящий
+алгоритм или некоторый иммитирующий алгоритм - информация, остающаяся недоступной для LLM. Это позволяет 
+проецировать результаты тестирования агента на реальные случаи применения с реальными, истинными 
+алгоритмами;
+\end{itemize}
 
+\section{Список инструментов ExCodeAct}\label{appendix-tools:sec2}
+
+Полный список прочих, не кодовых инструментов, принимающих участие в тестировании
+(например, мультимодальности в \ref{appendix-multimodal}), следующий:
+\begin{itemize}
+	\item ``arxiv\_search'' - метод поиска научных статей на базе arxiv по запросу;
+	\item ``list\_buckets'' - выводит список доступных S3 бакетов;
+	\item ``list\_objects'' - выводит список ключей объектов в выбранном S3 бакете;
+	\item ``download\_object'' - загружает в указанный путь объект из выбранного S3 бакета. 
+\end{itemize}
